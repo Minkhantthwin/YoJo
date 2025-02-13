@@ -1,3 +1,10 @@
+<?php
+include ('connect.php');
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,50 +39,7 @@
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.php" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename"><span class="text-danger">J</span>oJo</h1>
-        <span>.</span>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home<br></a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#chefs">Chefs</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="index.html#book-a-table">Book a Table</a>
-
-    </div>
-  </header>
+  <?php include('navbar.php') ?>
 
   <main class="main">
 
@@ -85,8 +49,8 @@
       <div class="container">
         <div class="row gy-4 justify-content-center justify-content-lg-between">
           <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h1 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h1>
-            <p data-aos="fade-up" data-aos-delay="100">We are team of talented designers making websites with Bootstrap</p>
+            <h1 data-aos="fade-up">Enjoy Your<br>Delicious Hotpot</h1>
+            <p data-aos="fade-up" data-aos-delay="100">From Your Home or With Us!!</p>
             <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
               <a href="#book-a-table" class="btn-get-started">Booka a Table</a>
               <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
