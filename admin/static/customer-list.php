@@ -34,7 +34,7 @@ include('customer-paginate.php');
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>HERO-FITNESS</title>
+	<title>JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@ include('customer-paginate.php');
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3 text-center">Guest-Member-List</h1>
+					<h1 class="h3 mb-3 text-center">Member-List</h1>
 
 					<div class="row">
 						<div class="col-12">
@@ -67,7 +67,7 @@ include('customer-paginate.php');
 							<div class="row align-items-center">
 								<!-- Left side: Create New Order button -->
 								<div class="col-md-6">
-									<a href="customer.php" class="btn btn-primary">Registration</a>
+									<a href="customer.php" class="btn btn-danger">Registration</a>
 								</div>
 
 								<!-- Right side: Search bar -->
@@ -84,7 +84,7 @@ include('customer-paginate.php');
 											<th>Phone</th>
 											<th class="d-none d-md-table-cell">NRC</th>
 											<th class="d-none d-md-table-cell">Password</th>
-											<th>Update</th>
+										
 										</tr>
 									</thead>
 									<tbody>
@@ -99,7 +99,7 @@ include('customer-paginate.php');
 											echo "<td>" . $arr['Phone'] . "</td>";
 											echo "<td class='d-none d-md-table-cell'>" . $arr['NRC'] . "</td>";
 											echo "<td class='d-none d-md-table-cell'>" . $arr['Password'] . "</td>";
-											echo "<td><a class='btn btn-info' href='customer-membership.php?CustomerID=" . $arr['CustomerID'] . "'>Membership</a></td>";
+											
 											echo "</tr>";
 										}
 									}
@@ -121,7 +121,7 @@ include('customer-paginate.php');
 									</button>
 									
 									<!-- Page Numbers -->
-									<button type="button" class="btn btn-primary">
+									<button type="button" class="btn btn-danger">
 										<?php echo $guestPage; ?>
 									</button>
 
@@ -139,101 +139,8 @@ include('customer-paginate.php');
 						</div>
 					</div>
 
-					<?php
-		$query = "SELECT * FROM customer
-		          WHERE MembershipID IS NOT NULL AND MembershipID != ''";
-		$result = mysqli_query($connect, $query);
-		$size = mysqli_num_rows($result);
-		$arr = mysqli_fetch_array( $result);
+				
 
-		if ($size < 1) {
-			echo "<h3 class='mb-3 text-center'>There are no registered members.</h3>";
-		} else {
-		?>    				
-<h1 class="h3 mb-3 text-center">Member-list</h1>
-
-<div class="row">
-	<div class="col-12">
-	
-	<div class="card">
-		<div class="card-header">
-		<div class="row align-items-center">
-			<!-- Left side: Create New Order button -->
-			<div class="col-md-6">
-				<a href="customer.php" class="btn btn-primary">Registration</a>
-			</div>
-
-			<!-- Right side: Search bar -->
-			
-		</div>
-	</div>
-	<div class="card-body">
-			<table class="table mb-3 text-center">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Membership</th>
-						<th class="d-none d-md-table-cell">Start-Date</th>
-						<th class="d-none d-md-table-cell">End-Date</th>
-						<th>Update</th>
-					</tr>
-				</thead>
-				<tbody>
-					
-				<?php
-					if (mysqli_num_rows($resultMember) > 0) {
-						while ($arr = mysqli_fetch_array($resultMember)) {
-							echo "<tr>";
-							echo "<td> C-" . $arr['CustomerID'] . "</td>";
-							echo "<td>" . $arr['CustomerName'] . "</td>";
-							echo "<td>" . $arr['Email'] . "</td>";
-							echo "<td>" . $arr['Phone'] . "</td>";
-							echo "<td>" . $arr['MembershipID'] . "</td>";
-							echo "<td class='d-none d-md-table-cell'>" . $arr['Start_Date'] . "</td>";
-							echo "<td class='d-none d-md-table-cell'>" . $arr['End_Date'] . "</td>";
-							echo "<td><a class='btn btn-info' href='customer-membership.php?CustomerID=" . $arr['CustomerID'] . "'>Membership</a></td>";
-							echo "</tr>";
-						}
-					}
-					?>
-						<?php
-						}
-						?>
-				</tbody>
-			</table>
-			<div class="row align-items-center">
-				<div class="col-12 text-center">
-				<!-- Pagination for Registered Members using Button Group -->
-				<div class="btn-group mb-3" role="group" aria-label="Registered members pagination">
-					<!-- Previous Button -->
-					<button type="button" class="btn btn-secondary"
-						<?php if ($memberPage <= 1) { echo 'disabled'; } ?> 
-						onclick="window.location.href='?memberPage=<?php echo $memberPage - 1; ?>'">
-						<i class="align-middle" data-feather="arrow-left-circle"></i>
-					</button>
-					
-					<!-- Current Page Number -->
-					<button type="button" class="btn btn-primary">
-						<?php echo $memberPage; ?>
-					</button>
-
-					<!-- Next Button -->
-					<button type="button" class="btn btn-secondary" 
-						<?php if ($memberPage >= $totalMemberPages) { echo 'disabled'; } ?> 
-						onclick="window.location.href='?memberPage=<?php echo $memberPage + 1; ?>'">
-						<i class="align-middle" data-feather="arrow-right-circle"></i>
-					</button>
-				</div>
-
-				</div>
-			</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 				</div>
 			</main>

@@ -33,7 +33,7 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Product-list | Hero-Fitness</title>
+	<title>Ingredient-list | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
 			<main class="content">
 				<div class="container-fluid p-0">
 
-                <h1 class="h3 mb-3 text-center">Product-List</h1>
+                <h1 class="h3 mb-3 text-center">Ingredient-List</h1>
 					<div class="row">
 						<div class="col-12">
 							<form method="GET">
@@ -57,7 +57,7 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
 							<div class="row align-items-center">
 								<!-- Left side: Create New Order button -->
 								<div class="col-md-6">
-									<a href="product.php" class="btn btn-primary">+ Create New Product</a>
+									<a href="product.php" class="btn btn-danger">+ Create New Ingredient</a>
 								</div>
 
 								<!-- Right side: Search bar -->
@@ -65,7 +65,7 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
 									<div class="input-group">
 										<input type="text" name="search" class="form-control bg-light border-1 small" placeholder="Search product..."
 											aria-label="Search" value="<?php echo htmlspecialchars($searchTerm); ?>">
-										<button class="btn btn-primary" type="submit">
+										<button class="btn btn-danger" type="submit">
 											<i class="align-middle" data-feather="search"></i>
 										</button>
 									</div>
@@ -114,7 +114,7 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
 											echo "<td> P-". $ID ."</td> ";	
 											echo"<td>". $arr['productName'] ."</td>";
 											echo"<td class='d-none d-md-table-cell'>". $arr['productTypeName'] ."</td>";
-											echo"<td>". $arr['price'] ."$</td>";
+											echo"<td>". $arr['price'] ." MMK</td>";
                                             echo"<td>". $arr['quantity'] ."</td>";
 											// echo "<td class='d-none d-md-table-cell'>". $arr['description'] ."</td>";
 											echo "<td class='d-none d-md-table-cell'>". $arr['remark'] ."</td>";

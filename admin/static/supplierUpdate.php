@@ -58,7 +58,7 @@ if (isset($_POST['btnUpdate']))
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Blank Page | HERO-FITNESS</title>
+	<title>Blank Page | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@ if (isset($_POST['btnUpdate']))
 						<div class="col-12">
                         <div class="card">
 								<div class="card-header">
-                                <a href="supplier-list.php" class="btn btn-primary"><- Supplier-List</a>
+                                <a href="supplier-list.php" class="btn btn-danger"><- Supplier-List</a>
 								</div>
 								<div class="card-body">
                                 <form method="POST" enctype="multipart/form-data">
@@ -114,7 +114,7 @@ if (isset($_POST['btnUpdate']))
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-12 text-end">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnUpdate" value="Update">
+                                            <input type="submit" class="btn btn-lg btn-danger" name="btnUpdate" value="Update">
                                             </div>                              
                                         </div>
                                     </form>

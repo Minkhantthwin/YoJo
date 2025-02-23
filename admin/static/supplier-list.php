@@ -33,7 +33,7 @@ $AdminName = $rowAdmin['AdminName'];
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Blank Page | AdminKit Demo</title>
+	<title>Supplier-List | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@ $AdminName = $rowAdmin['AdminName'];
 							<div class="row align-items-center">
 								<!-- Left side: Create New Order button -->
 								<div class="col-md-6">
-									<a href="supplier.php" class="btn btn-primary">+ Add Supplier</a>
+									<a href="supplier.php" class="btn btn-danger">+ Add Supplier</a>
 								</div>
 
 								<!-- Right side: Search bar -->
@@ -103,7 +103,7 @@ $AdminName = $rowAdmin['AdminName'];
                                                 </td>";
                                              echo "<td>
                                            
-                                            <a class='btn btn-danger' href='supplierDelete.php?supplierID=$ID'>Delete</a>
+                                            <a class='btn btn-dark' href='supplierDelete.php?supplierID=$ID'>Delete</a>
                                                 </td>";   
                                               echo "</tr>";    
 											} 

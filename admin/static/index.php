@@ -36,7 +36,7 @@ include('order-paginate.php');
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Dashboard | Hero-Fitness</title>
+	<title>Dashboard | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	
@@ -70,7 +70,7 @@ include('order-paginate.php');
 								<div class="row align-items-center">
 								
 								<div class="col-md-6">
-									<a href="sign-up.php" class="btn btn-primary">	<i class="align-middle" data-feather="log-in"></i> Sign Up</a>
+									<a href="sign-up.php" class="btn btn-danger"><i class="align-middle" data-feather="log-in"></i> Sign Up</a>
 								</div>
 	
 							</div>
@@ -129,7 +129,7 @@ include('order-paginate.php');
 									<div class="input-group">
 										<input type="text" name="search" class="form-control bg-light border-1 small" placeholder="Search purchase..."
 											aria-label="Search" value="<?php echo htmlspecialchars($searchTerm); ?>">
-										<button class="btn btn-primary" type="submit">
+										<button class="btn btn-danger" type="submit">
 											<i class="align-middle" data-feather="search"></i>
 										</button>
 									</div>
@@ -181,19 +181,19 @@ include('order-paginate.php');
 							<div class="col-12 text-center">
 							<div class="btn-group mt-3" role="group" aria-label="Pagination">
     <!-- Previous Button -->
-    <button type="button" class="btn btn-secondary"
+    <button type="button" class="btn btn-dark"
         <?php if ($currentPage <= 1) { echo 'disabled'; } ?>
         onclick="window.location.href='?page=<?php echo $currentPage - 1; ?>&search=<?php echo urlencode($searchTerm); ?>'">
         <i class="align-middle" data-feather="arrow-left-circle"></i>
     </button>
     
     <!-- Current Page Number -->
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-danger">
         <?php echo $currentPage; ?>
     </button>
 
     <!-- Next Button -->
-    <button type="button" class="btn btn-secondary" 
+    <button type="button" class="btn btn-dark" 
         <?php if ($currentPage >= $totalPages) { echo 'disabled'; } ?>
         onclick="window.location.href='?page=<?php echo $currentPage + 1; ?>&search=<?php echo urlencode($searchTerm); ?>'">
         <i class="align-middle" data-feather="arrow-right-circle"></i>

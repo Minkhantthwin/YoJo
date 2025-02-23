@@ -60,13 +60,13 @@ include('purchase-paginate.php');
 						<form method="GET">
 							<div class="row align-items-center">
 								<div class="col-md-6">
-									<a href="purchase.php" class="btn btn-primary">+ Purchase</a>
+									<a href="purchase.php" class="btn btn-danger">+ Purchase</a>
 								</div>
 								<div class="col-md-6 text-end">
 									<div class="input-group">
 										<input type="text" name="search" class="form-control bg-light border-1 small" placeholder="Search purchase..."
 											aria-label="Search" value="<?php echo htmlspecialchars($searchTerm); ?>">
-										<button class="btn btn-primary" type="submit">
+										<button class="btn btn-danger" type="submit">
 											<i class="align-middle" data-feather="search"></i>
 										</button>
 									</div>
@@ -102,7 +102,7 @@ include('purchase-paginate.php');
 										echo "<td>" . $arr['totalQuantity'] . "</td>";
 										echo "<td>" . $arr['Items'] . "</td>";
 										echo "<td>" . $arr['status'] . "</td>";
-										echo "<td><a class='btn btn-info' href='purchaseDetail.php?purchaseCode=" . $arr['purchaseCode'] . "'>Detail</a></td>";
+										echo "<td><a class='btn btn-secondary' href='purchaseDetail.php?purchaseCode=" . $arr['purchaseCode'] . "'>Detail</a></td>";
 										echo "</tr>";
 									}
 								}
@@ -120,7 +120,7 @@ include('purchase-paginate.php');
 							</button>
 							
 							<!-- Current Page Number -->
-							<button type="button" class="btn btn-primary">
+							<button type="button" class="btn btn-danger">
 								<?php echo $currentPage; ?>
 							</button>
 

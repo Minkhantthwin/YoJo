@@ -33,7 +33,7 @@ $AdminName = $rowAdmin['AdminName'];
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Blank Page | AdminKit Demo</title>
+	<title>PT Page | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@ $AdminName = $rowAdmin['AdminName'];
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3 text-center">Product-Type-List</h1>
+					<h1 class="h3 mb-3 text-center">Ingridient-Type-List</h1>
 
 					<div class="row">
 						<div class="col-12">
@@ -57,7 +57,7 @@ $AdminName = $rowAdmin['AdminName'];
 							<div class="row align-items-center">
 								<!-- Left side: Create New Order button -->
 								<div class="col-md-6">
-									<a href="product-type.php" class="btn btn-primary">+ Create New Product-Type</a>
+									<a href="product-type.php" class="btn btn-danger">+ Create New Ingredient-Type</a>
 								</div>
 
 								<!-- Right side: Search bar -->
@@ -100,7 +100,7 @@ $AdminName = $rowAdmin['AdminName'];
                                                 </td>";
                                              echo "<td>
                                            
-                                            <a class='btn btn-danger' href='ptDelete.php?productTypeCode=$ID'>Delete</a>
+                                            <a class='btn btn-dark' href='ptDelete.php?productTypeCode=$ID'>Delete</a>
                                                 </td>";   
                                               echo "</tr>";    
 											} 

@@ -64,7 +64,7 @@ if (isset($_POST['btnsave']))
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Blank Page | AdminKit Demo</title>
+	<title>Product-Type-Form | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -79,19 +79,19 @@ if (isset($_POST['btnsave']))
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3 text-center">Product-Type Form</h1>
+					<h1 class="h3 mb-3 text-center">Ingredient-Type Form</h1>
 
 					<div class="row">
 						<div class="col-12">
                         <div class="card">
 								<div class="card-header">
-                                <a href="product-type-list.php" class="btn btn-primary">Product-Type-List -></a>
+                                <a href="product-type-list.php" class="btn btn-danger">Ingredient-Type-List -></a>
 								</div>
 								<div class="card-body">
                                 <form method="POST" enctype="multipart/form-data">
                                         <div class="row mb-3">
                                             <div class="col-6">
-                                            <label class="form-label">Product-Type</label>
+                                            <label class="form-label">Ingredient-Type</label>
 											<input class="form-control form-control-lg" type="text" name="productTypeName" placeholder="Enter product-type" />
                                             </div>
                                             <div class="col-6">
@@ -105,7 +105,7 @@ if (isset($_POST['btnsave']))
                                         
                                         <div class="row mb-3">
                                             <div class="col-12 text-end">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnsave" value="Register">
+                                            <input type="submit" class="btn btn-lg btn-danger" name="btnsave" value="Register">
                                             </div>                              
                                         </div>
                                     </form>

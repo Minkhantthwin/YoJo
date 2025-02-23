@@ -64,7 +64,7 @@ if (isset($_POST['btnsave']))
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>HERO-FITNESS</title>
+	<title>JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -88,7 +88,7 @@ if (isset($_POST['btnsave']))
 							<div class="row align-items-center">
 								<!-- Left side: Create New Order button -->
 								<div class="col-md-6">
-									<a href="customer-list.php" class="btn btn-primary">Member-list -></a>
+									<a href="customer-list.php" class="btn btn-danger">Member-list -></a>
 								</div>
 
 								<!-- Right side: Search bar -->
@@ -121,7 +121,7 @@ if (isset($_POST['btnsave']))
 											<input class="form-control form-control-lg" type="password" name="txtpassword" placeholder="Enter password" />
 										</div>
 										<div class="d-grid gap-2 mt-3">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnsave" value="Sign up">
+                                            <input type="submit" class="btn btn-lg btn-danger" name="btnsave" value="Sign up">
 										</div>
 									</form>
 								

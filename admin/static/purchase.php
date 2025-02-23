@@ -111,7 +111,7 @@ if (isset($_POST['btnSave'])) {
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Purchase-Form | HERO-FITNESS</title>
+	<title>Purchase-Form | JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -132,7 +132,7 @@ if (isset($_POST['btnSave'])) {
 						<div class="col-12">
                         <div class="card">
 								<div class="card-header">
-                                <a href="purchase-list.php" class="btn btn-primary">Purchase List -></a>
+                                <a href="purchase-list.php" class="btn btn-danger">Purchase List -></a>
 								</div>
 								<div class="card-body">
                                 <form method="POST" enctype="multipart/form-data">
@@ -191,7 +191,7 @@ if (isset($_POST['btnSave'])) {
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-12 text-center">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnAdd" value="Add">
+                                            <input type="submit" class="btn btn-lg btn-dark" name="btnAdd" value="Add">
                                             <input type="submit" class="btn btn-lg btn-danger" name="btnClear" value="Clear">
                                            
                                             </div>                              
@@ -261,7 +261,7 @@ if (isset($_POST['btnSave'])) {
                                     </select>
                                   </div>
                                  <div class="col-6 text-end">  
-                                <input type="submit" class="btn btn-lg btn-primary" name="btnSave" value="Purchase">
+                                <input type="submit" class="btn btn-lg btn-dark" name="btnSave" value="Purchase">
                                 <a href="purchase.php?action=clearall" class="btn btn-lg btn-primary">Clear All</a>                                    </div>                              
                                 </div>
                                 </div>

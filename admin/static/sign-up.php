@@ -101,7 +101,7 @@ if (isset($_POST['btnsave']))
 											<input class="form-control form-control-lg" type="password" name="txtpassword" placeholder="Enter password" />
 										</div>
 										<div class="d-grid gap-2 mt-3">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnsave" value="Sign up">
+                                            <input type="submit" class="btn btn-lg btn-danger" name="btnsave" value="Sign up">
 										</div>
 									</form>
 								</div>
