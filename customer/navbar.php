@@ -1,3 +1,15 @@
+<?php
+if (isset($_SESSION['CustomerID'])) {
+    $CustomerID = $_SESSION['CustomerID'];
+    $selectCustomer = "SELECT * FROM customer WHERE CustomerID = '$CustomerID'";
+    $resultCustomer = mysqli_query($connect, $selectCustomer);
+    $rowCustomer = mysqli_fetch_assoc($resultCustomer);
+    $CustomerName = $rowCustomer['CustomerName'];
+    $CustomerEmail = $rowCustomer['Email'];
+    $Phone = $rowCustomer['Phone'];
+    $Address = $rowCustomer['Address'];
+}
+?>
 <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
@@ -8,23 +20,34 @@
       </a>
 
       <nav id="navmenu" class="navmenu">
+      <?php if (isset($_SESSION['CustomerID'])) {
+                ?>
         <ul>
           <li><a href="#hero" class="active">Home<br></a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
-          <li><a href="#events">Events</a></li>
           <li><a href="#gallery">Reviews</a></li>
           <li><a href="#contact">Contacts</a></li>
           <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">My Orders</a></li>
+              <li><a href="#">My Bookings</a></li>
               <li><a href="sign-out.php">Sign out</a></li>
             </ul>
           </li>
-         
-        </ul>
+          </ul>
+          <?php } else { ?>
+            <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Reviews</a></li>
+          <li><a href="#contact">Contacts</a></li>
+          <li><a href="sign-in.php">Sign-in</a></li>
+            </ul>
+          <?php } ?>
+   
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
