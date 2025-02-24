@@ -1,6 +1,19 @@
 <?php
 
+session_start();
 include('connect.php');
+
+if(!isset($_SESSION['AdminID']))
+{
+	echo "<script>window.location='sigin-in.php'</script>";
+}
+
+$AdminID = $_SESSION['AdminID'];
+
+$selectAdmin = "SELECT AdminName FROM admin WHERE AdminID = '$AdminID'";
+$resultAdmin = mysqli_query($connect, $selectAdmin);
+$rowAdmin = mysqli_fetch_assoc($resultAdmin);
+$AdminName = $rowAdmin['AdminName'];
 
 if (isset($_POST['btnsave']))
 {
@@ -11,7 +24,7 @@ if (isset($_POST['btnsave']))
     $email=$_POST['txtemail'];
     $password=$_POST['txtpassword'];
 
-    $select = "SELECT * FROM admin WHERE Email='$email'";
+    $select = "SELECT * FROM customer WHERE Email='$email'";
     $ret=mysqli_query($connect,$select);
     $count=mysqli_num_rows($ret);
 
@@ -22,20 +35,19 @@ if (isset($_POST['btnsave']))
       }
       else
       {
-        $query="INSERT INTO admin(AdminName, NRC, Address, Phone, Email, Password) values('$name','$nrc','$address','$phone','$email','$password')";
+        $query="INSERT INTO customer(CustomerName, NRC, Address, Phone, Email, Password) values('$name','$nrc','$address','$phone','$email','$password')";
         $result=mysqli_query($connect, $query);
 
         if ($result) {
             echo "<script>window.alert('Your account has been successfully registered!')</script>";
-            echo "<script>window.location='sign-in.php'</script>";
+            echo "<script>window.location='customer-list.php'</script>";
         }
         else{
             echo "<p>Error in Entry</p>";
         }
       }
 }
-
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,31 +62,39 @@ if (isset($_POST['btnsave']))
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>JoJo-Hotpot</title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	<main class="d-flex w-100">
-		<div class="container d-flex flex-column">
-			<div class="row vh-100">
-				<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
-					<div class="d-table-cell align-middle">
+	<div class="wrapper">
+	<?php include('refactor/sidebar.php'); ?>
+		<div class="main">
+		<?php include('refactor/navbar.php'); ?>
 
-						<div class="text-center mt-4">
-							<h1 class="h2">Hero-Fitness</h1>
-							<p class="lead">
-								Admin-Registration
-							</p>
-						</div>
+			<main class="content">
+				<div class="container-fluid p-0">
 
+					<h1 class="h3 mb-3 text-center">Member-Registration</h1>
+
+					<div class="row">
+						<div class="col-12">
 						<div class="card">
-							<div class="card-body">
-								<div class="m-sm-3">
+							<div class="card-header">
+							<div class="row align-items-center">
+								<!-- Left side: Create New Order button -->
+								<div class="col-md-6">
+									<a href="customer-list.php" class="btn btn-danger">Member-list -></a>
+								</div>
+
+								<!-- Right side: Search bar -->
+							</div>
+						</div>
+						<div class="card-body">
 									<form method="POST">
 										<div class="mb-3">
 											<label class="form-label">Full name</label>
@@ -96,7 +116,7 @@ if (isset($_POST['btnsave']))
 											<label class="form-label">Email</label>
 											<input class="form-control form-control-lg" type="email" name="txtemail" placeholder="Enter your email" />
 										</div>
-										<div class="mb-3">
+										<div class="mb-4">
 											<label class="form-label">Password</label>
 											<input class="form-control form-control-lg" type="password" name="txtpassword" placeholder="Enter password" />
 										</div>
@@ -104,17 +124,21 @@ if (isset($_POST['btnsave']))
                                             <input type="submit" class="btn btn-lg btn-danger" name="btnsave" value="Sign up">
 										</div>
 									</form>
-								</div>
+								
+							</div>
 							</div>
 						</div>
-						<div class="text-center mb-3">
-							Already have account? <a href="sigin-in.php">Log In</a>
-						</div>
 					</div>
+					
+					
+
 				</div>
-			</div>
+			</main>
+
+		
+			<?php include('refactor/footer.php'); ?>
 		</div>
-	</main>
+	</div>
 
 	<script src="js/app.js"></script>
 

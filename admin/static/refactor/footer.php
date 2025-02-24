@@ -3,7 +3,7 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>HERO FITNESS</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>2024</strong></a>&copy;
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>JoJo-Hotpot</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>2025</strong></a>&copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
