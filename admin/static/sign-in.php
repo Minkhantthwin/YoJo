@@ -22,7 +22,7 @@ if(isset($_POST['btnLogin']))
   if($count < 1)
   {
     echo "<script>window.alert('Email or Password Incorrect.')</script>";
-    echo "<script>window.location='sigin-in.php'</script>";
+    echo "<script>window.location='sign-in.php'</script>";
   }
   else
   {
@@ -56,6 +56,13 @@ if(isset($_POST['btnLogin']))
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<style>
+	    .form-check-input:checked {
+	        background-color: red;
+	        border-color: red;
+	    }
+	</style>
 </head>
 
 <body>
@@ -91,14 +98,14 @@ if(isset($_POST['btnLogin']))
 											</div>
 										</div>
 										<div class="d-grid gap-2 mt-3">
-										<input type="submit" class="btn btn-lg btn-primary" name="btnLogin" value="Sign in">
+										<input type="submit" class="btn btn-lg btn-danger" name="btnLogin" value="Sign in">
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
 						<div class="text-center mb-3">
-							Don't have an account? <a href="sign-up.php">Sign up</a>
+							Don't have an account? <a class="text-danger" href="sign-up.php">Sign up</a>
 						</div>
 					</div>
 				</div>
