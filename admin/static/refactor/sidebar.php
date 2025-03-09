@@ -20,6 +20,17 @@
               <i class="align-middle" data-feather="users"></i> <span class="align-middle">Members</span>
             </a>
 					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="booking-list.php">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Booking-List</span>
+            </a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="table-list.php">
+              <i class="align-middle" data-feather="table"></i> <span class="align-middle">Table-List</span>
+            </a>
+					</li>
+
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="product-list.php">
@@ -44,6 +55,8 @@
             </a>
 					</li>
 
+					
+
 					<li class="sidebar-header">
 						Registration & Transaction
 					</li>
@@ -51,6 +64,16 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="customer.php">
               <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Member Registration</span>
+            </a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="booking.php">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Booking</span>
+            </a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="table.php">
+              <i class="align-middle" data-feather="table"></i> <span class="align-middle">Tables</span>
             </a>
 					</li>
 
