@@ -15,8 +15,39 @@ $resultAdmin = mysqli_query($connect, $selectAdmin);
 $rowAdmin = mysqli_fetch_assoc($resultAdmin);
 $AdminName = $rowAdmin['AdminName'];
 
+// In the PHP section, update the insert query
+if (isset($_POST['btnsave']))
+{
+    $tableNumber = $_POST['tableNumber'];
+    $location = $_POST['location'];
+    $capacity = $_POST['capacity'];
 
+    $select = "SELECT * FROM tables WHERE TableNumber='$tableNumber'";
+    $ret = mysqli_query($connect, $select);
+    $count = mysqli_num_rows($ret);
+
+    if ($count > 0)
+    {
+        echo "<script>window.alert('This table number already exists! Please choose another number.')</script>";
+    }
+    else
+    {
+        $query = "INSERT INTO tables(TableNumber, Location, Capacity) VALUES ('$tableNumber', '$location', '$capacity')";
+        $result = mysqli_query($connect, $query);
+
+        if ($result) {
+            echo "<script>window.alert('Table has been successfully registered!')</script>";
+            echo "<script>window.location='table-list.php'</script>";
+        }
+        else {
+            echo "<script>window.alert('Error in registration!')</script>";
+        }
+    }
+}
+
+// In the form section
 ?>
+                               
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +79,7 @@ $AdminName = $rowAdmin['AdminName'];
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3 text-center"></h1>
+					<h1 class="h3 mb-3 text-center">Table Registration</h1>
 
 					<div class="row">
 						<div class="col-12">
@@ -57,26 +88,41 @@ $AdminName = $rowAdmin['AdminName'];
 							<div class="row align-items-center">
 								<!-- Left side: Create New Order button -->
 								<div class="col-md-6">
-									<a href="" class="btn btn-danger"></a>
+									<a href="table-list.php" class="btn btn-danger">Table List -></a>
 								</div>
 
 								<!-- Right side: Search bar -->
-								<div class="col-md-6 text-end">
-									<div class="input-group">
-										<input type="text" name="search" class="form-control bg-light border-1 small" placeholder="Search for..."
-											aria-label="Search" aria-describedby="basic-addon2">
-										<div class="input-group-append">
-											<button class="btn btn-danger" type="submit">
-												<i class="align-middle" data-feather="search"></i>
-											</button>
-										</div>
-									</div>
-								</div>
+							
 							</div>
 						</div>
-								<div class="card-body">
-								
-								</div>
+						<div class="card-body">
+                                    <form method="POST">
+                                        <div class="row mb-3">
+                                            <div class="col-4">
+                                                <label class="form-label">Table Number</label>
+                                                <input class="form-control form-control-lg" type="text" name="tableNumber" placeholder="Enter table number..." required />
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="form-label">Location</label>
+                                                <select class="form-select form-select-lg" name="location" required>
+                                                    <option value="">Select Location</option>
+                                                    <option value="Indoor">Indoor</option>
+                                                    <option value="Outdoor">Outdoor</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="form-label">Capacity</label>
+                                                <input class="form-control form-control-lg" type="number" name="capacity" 
+                                                       min="2" max="8" value="4" required />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-12 text-end">
+                                                <input type="submit" class="btn btn-lg btn-danger" name="btnsave" value="Register">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
 							</div>
 						</div>
 					</div>

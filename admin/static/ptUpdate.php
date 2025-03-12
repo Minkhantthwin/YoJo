@@ -5,7 +5,7 @@ include('connect.php');
 
 if(!isset($_SESSION['AdminID']))
 {
-	echo "<script>window.location='sigin-in.php'</script>";
+	echo "<script>window.location='sign-in.php'</script>";
 }
 
 $AdminID = $_SESSION['AdminID'];
@@ -78,7 +78,7 @@ if (isset($_POST['btnUpdate']))
 						<div class="col-12">
                         <div class="card">
 								<div class="card-header">
-                                <a href="product-type-list.php" class="btn btn-primary"><- Product-Type-List</a>
+                                <a href="product-type-list.php" class="btn btn-danger"><- Product-Type-List</a>
 								</div>
 								<div class="card-body">
                                 <form method="POST" enctype="multipart/form-data">
@@ -98,7 +98,7 @@ if (isset($_POST['btnUpdate']))
                                         
                                         <div class="row mb-3">
                                             <div class="col-12 text-end">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnUpdate" value="Register">
+                                            <input type="submit" class="btn btn-lg btn-danger" name="btnUpdate" value="Register">
                                             </div>                              
                                         </div>
                                     </form>

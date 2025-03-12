@@ -99,7 +99,7 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
 											<th class="d-none d-md-table-cell">P-Type</th>
 											<th>Price</th>
 											<th>Quantity</th>
-                                            <th class="d-none d-md-table-cell">Description</th>
+                                            <!-- <th class="d-none d-md-table-cell">Description</th> -->
 											<th class="d-none d-md-table-cell">Remark</th>
                                             <th class="d-none d-md-table-cell">Image</th>
                                             <th colspan="2">Action</th>
@@ -118,7 +118,9 @@ $searchTerm = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET
                                             echo"<td>". $arr['quantity'] ."</td>";
 											// echo "<td class='d-none d-md-table-cell'>". $arr['description'] ."</td>";
 											echo "<td class='d-none d-md-table-cell'>". $arr['remark'] ."</td>";
-                                            echo "<td class='d-none d-md-table-cell'>". $arr['photo'] ."</td>";
+                                            echo "<td class='d-none d-md-table-cell'>
+                                                    <img src='products/_" . $arr['photo'] . "' alt='Product Image' style='width: 50px; height: 50px; object-fit: cover;'>
+                                                </td>";
                                             echo "<td>
                                             <a class='btn btn-success' href='productUpdate.php?productCode=$ID'>Edit</a>
                                             

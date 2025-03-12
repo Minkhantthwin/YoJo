@@ -82,19 +82,19 @@ if (isset($_POST['btnUpdate'])) {
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Admin-List</h1>
+					<h1 class="h3 mb-3">Ingredient-Update</h1>
 
 					<div class="row">
 						<div class="col-12">
 						<div class="card">
 								<div class="card-header">
-                                <a href="product-list.php" class="btn btn-primary"> <- Product List</a>
+                                <a href="product-list.php" class="btn btn-danger"> <- Ingredient List</a>
 								</div>
 								<div class="card-body">
                                 <form method="POST" enctype="multipart/form-data">
                                         <div class="row mb-3">
                                             <div class="col-6">
-                                            <label class="form-label">Product-Name</label>
+                                            <label class="form-label">Ingredient-Name</label>
 											<input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your product" value="<?php echo $arr['productName'] ?>" />
                                             </div>
                                             <div class="col-6">
@@ -114,9 +114,9 @@ if (isset($_POST['btnUpdate'])) {
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-12">
-                                            <label class="form-label">Product-Type</label>
+                                            <label class="form-label">Ingredient-Type</label>
                                             <select class="form-select mb-3" name="code">
-                                            <option selected>Choose Product-Type</option>
+                                            <option selected>Choose Ingredient-Type</option>
                                             <?php
                                             $query2 = "SELECT * FROM product_type where status='In-Stock' order by productTypeName";
                                             $ret = mysqli_query($connect, $query2);
@@ -141,7 +141,7 @@ if (isset($_POST['btnUpdate'])) {
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-12 text-end">
-                                            <input type="submit" class="btn btn-lg btn-primary" name="btnUpdate" value="Update">
+                                            <input type="submit" class="btn btn-lg btn-danger" name="btnUpdate" value="Update">
                                             </div>                              
                                         </div>
                                     </form>

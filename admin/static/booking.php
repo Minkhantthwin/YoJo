@@ -22,23 +22,38 @@ if (isset($_POST['btnsave']))
     $guests = $_POST['guests'];
     $customerID = $_POST['customer'];
     $tableID = $_POST['table']; // Fixed the name attribute to match the form
+    $status = 'Pending';
 
     // Check if the table is already booked for the same date and time
     $select = "SELECT * FROM booking 
                WHERE TableID='$tableID' 
-               AND BookingDate='$bookingDate' 
-               AND BookingTime='$bookingTime'";
+               AND booking_date='$bookingDate' 
+               AND booking_time='$bookingTime'";
+    $ret = mysqli_query($connect, $select);
+    $count = mysqli_num_rows($ret);
+
+    // Convert booking time to timestamps for comparison
+    $bookingDateTime = strtotime("$bookingDate $bookingTime");
+    $oneHourBefore = date('H:i', strtotime('-1 hour', $bookingDateTime));
+    $oneHourAfter = date('H:i', strtotime('+1 hour', $bookingDateTime));
+
+    // Check if the table is already booked within the one-hour window
+    $select = "SELECT * FROM booking 
+               WHERE TableID = '$tableID' 
+               AND booking_date = '$bookingDate'
+               AND booking_time BETWEEN '$oneHourBefore' AND '$oneHourAfter'
+               AND status != 'Cancelled'";
     $ret = mysqli_query($connect, $select);
     $count = mysqli_num_rows($ret);
 
     if ($count > 0)
     {
-        echo "<script>window.alert('This table is already booked for the selected date and time!')</script>";
+        echo "<script>window.alert('This table is not available at this time. Please choose a different time with at least 1 hour gap from existing bookings.')</script>";
     }
     else
     {
-        $query = "INSERT INTO booking(BookingDate, BookingTime, NumberOfGuests, CustomerID, TableID) 
-                  VALUES ('$bookingDate', '$bookingTime', '$guests', '$customerID', '$tableID')";
+        $query = "INSERT INTO booking(booking_date, booking_time, guests, CustomerID, TableID, status) 
+                  VALUES ('$bookingDate', '$bookingTime', '$guests', '$customerID', '$tableID', '$status')";
         $result = mysqli_query($connect, $query);
 
         if ($result) {
@@ -138,17 +153,25 @@ if (isset($_POST['btnsave']))
                                         <div class="row mb-3">
                                             <div class="col-12">
                                             <label class="form-label">Tables</label>
-                                            <select class="form-select mb-3" name="table">
-                                            <option selected>Choose Table</option>
+                                            <select class="form-select mb-3" name="table" required>
+                                            <option value="">Choose Table</option>
                                             <?php
-                                            $query2 = "SELECT * FROM tables order by TableID";
+                                            $guests = isset($_POST['guests']) ? (int)$_POST['guests'] : 0;
+                                            $query2 = "SELECT * FROM tables 
+                                                     WHERE Capacity >= '$guests' 
+                                                     ORDER BY TableID";
                                             $ret = mysqli_query($connect, $query2);
                                             $size = mysqli_num_rows($ret);
 
-                                            for ($i = 0; $i < $size; $i++) {
-                                                $row = mysqli_fetch_array($ret);
-                                                $ID = $row['TableID'];
-                                                echo "<option value='$ID'>" . $row['TableNumber'] . "</option>";
+                                            if ($size > 0) {
+                                                while ($row = mysqli_fetch_array($ret)) {
+                                                    $ID = $row['TableID'];
+                                                    echo "<option value='$ID'>" . $row['TableNumber'] . 
+                                                         " (Capacity: " . $row['Capacity'] . 
+                                                         ", Location: " . $row['Location'] . ")</option>";
+                                                }
+                                            } else {
+                                                echo "<option disabled>No tables available for this party size</option>";
                                             }
                                             ?>
                                             </select>
@@ -176,6 +199,20 @@ if (isset($_POST['btnsave']))
 	</div>
 
 	<script src="js/app.js"></script>
+
+// Add this before closing </body> tag
+<script>
+document.querySelector('input[name="guests"]').addEventListener('change', function() {
+    const guestsCount = this.value;
+    const tableSelect = document.querySelector('select[name="table"]');
+    
+    fetch(`get_tables.php?guests=${guestsCount}`)
+        .then(response => response.text())
+        .then(data => {
+            tableSelect.innerHTML = data;
+        });
+});
+</script>
 
 </body>
 
