@@ -2,6 +2,10 @@
 include ('connect.php');
 session_start();
 
+if (isset($_SESSION['CustomerID'])) {
+  $CustomerID = $_SESSION['CustomerID']; }
+
+
 
 ?>
 
@@ -33,7 +37,73 @@ session_start();
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    .book-a-table .reservation-img {
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+}
 
+.book-a-table .reservation-form-bg {
+  background: color-mix(in srgb, var(--default-color), transparent 97%);
+}
+
+.book-a-table .php-booking-form {
+  padding: 30px;
+}
+
+@media (max-width: 575px) {
+  .book-a-table .php-booking-form {
+    padding: 20px;
+  }
+}
+
+.book-a-table .php-booking-form input[type=text],
+.book-a-table .php-booking-form input[type=email],
+.book-a-table .php-booking-form input[type=number],
+.book-a-table .php-booking-form input[type=date],
+.book-a-table .php-booking-form input[type=time],
+.book-a-table .php-booking-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 20%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.book-a-table .php-booking-form input[type=text]:focus,
+.book-a-table .php-booking-form input[type=email]:focus,
+.book-a-table .php-booking-form input[type=number]:focus,
+.book-a-table .php-booking-form input[type=date]:focus,
+.book-a-table .php-booking-form input[type=time]:focus,
+.book-a-table .php-booking-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.book-a-table .php-booking-form input[type=text]::placeholder,
+.book-a-table .php-booking-form input[type=email]::placeholder,
+.book-a-table .php-booking-form input[type=number]::placeholder,
+.book-a-table .php-booking-form input[type=date]::placeholder,
+.book-a-table .php-booking-form input[type=time]::placeholder,
+.book-a-table .php-booking-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.book-a-table .php-booking-form button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: 0;
+  padding: 14px 60px;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.book-a-table .php-booking-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+  </style>
 
 </head>
 
@@ -66,106 +136,51 @@ session_start();
 
     <!-- About Section -->
     <section id="about" class="about section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>About Us<br></h2>
+      <p><span>Welcome to</span> <span class="description-title">JoJo Hotpot</span></p>
+    </div><!-- End Section Title -->
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About Us<br></h2>
-        <p><span>Learn More</span> <span class="description-title">About Us</span></p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid mb-4" alt="">
-            <div class="book-a-table">
-              <h3>Book a Table</h3>
-              <p>+1 5589 55488 55</p>
-            </div>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/img/JoJo-About.jpg" class="img-fluid mb-4" alt="">
+          <div class="book-a-table">
+            <h3>Book a Table or Order Online</h3>
+            <p>Call us: +95 9976 503040</p>
+          
           </div>
-          <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-              </p>
+        </div>
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+          <div class="content ps-0 ps-lg-5">
+            <p class="fst-italic">
+              Experience the authentic taste of Asian hotpot at JoJo Hotpot, where tradition meets modern dining convenience.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i> <span>Fresh, premium ingredients sourced daily for the perfect hotpot experience</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span>Multiple soup bases to choose from, including vegetarian options</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <span>Convenient online ordering for delivery or dine-in reservations</span></li>
+            </ul>
+            <p>
+              At JoJo Hotpot, we bring the authentic hotpot experience to your table. Whether you're dining in our restaurant 
+              or enjoying our delivery service, we ensure the highest quality ingredients and exceptional service. Our 
+              restaurant offers both traditional dining and modern delivery options to suit your preferences.
+            </p>
 
-              <div class="position-relative mt-4">
-                <img src="assets/img/about-2.jpg" class="img-fluid" alt="">
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
-              </div>
+            <div class="position-relative mt-4">
+              <img src="assets/img/hot-pot.jpg" class="img-fluid" alt="">
+              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
             </div>
           </div>
         </div>
-
       </div>
+    </div>
 
     </section><!-- /About Section -->
 
     <!-- Why Us Section -->
-    <section id="why-us" class="why-us section light-background">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="why-box">
-              <h3>Why Choose Yummy</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-              </p>
-              <div class="text-center">
-                <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
-              </div>
-            </div>
-          </div><!-- End Why Box -->
-
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="col-xl-4">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-gem"></i>
-                  <h4>Ullamco laboris ladore lore pan</h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-inboxes"></i>
-                  <h4>Labore consequatur incidid dolore</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Why Us Section -->
+  
 
     <!-- Stats Section -->
     <section id="stats" class="stats section dark-background">
@@ -216,7 +231,7 @@ session_start();
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Our Menu</h2>
-        <p><span>Check Our</span> <span class="description-title">Yummy Menu</span></p>
+        <p><span>Check Our</span> <span class="description-title">Hotpot Menu</span></p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -702,154 +717,8 @@ session_start();
 
     </section><!-- /Testimonials Section -->
 
-    <!-- Events Section -->
-    <section id="events" class="events section">
 
-      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 1
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-1.jpg)">
-              <h3>Custom Parties</h3>
-              <div class="price align-self-start">$99</div>
-              <p class="description">
-                Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis facere. Enim facilis veritatis id est rem repudiandae nulla expedita quas.
-              </p>
-            </div><!-- End Event item -->
-
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-2.jpg)">
-              <h3>Private Parties</h3>
-              <div class="price align-self-start">$289</div>
-              <p class="description">
-                In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo vero est ut dolores ea assumenda et. Delectus saepe accusamus aspernatur.
-              </p>
-            </div><!-- End Event item -->
-
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-3.jpg)">
-              <h3>Birthday Parties</h3>
-              <div class="price align-self-start">$499</div>
-              <p class="description">
-                Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam. Esse quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
-              </p>
-            </div><!-- End Event item -->
-
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(assets/img/events-4.jpg)">
-              <h3>Wedding Parties</h3>
-              <div class="price align-self-start">$899</div>
-              <p class="description">
-                Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam. Esse quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
-              </p>
-            </div><!-- End Event item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Events Section -->
-
-    <!-- Chefs Section -->
-    <section id="chefs" class="chefs section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>chefs</h2>
-        <p><span>Our</span> <span class="description-title">Proffesional Chefs<br></span></p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Master Chef</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
-              </div>
-            </div>
-          </div><!-- End Chef Team Member -->
-
-          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chefs-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Patissier</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
-              </div>
-            </div>
-          </div><!-- End Chef Team Member -->
-
-          <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/chefs/chefs-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cook</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
-              </div>
-            </div>
-          </div><!-- End Chef Team Member -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Chefs Section -->
 
     <!-- Book A Table Section -->
     <section id="book-a-table" class="book-a-table section">
@@ -857,50 +726,81 @@ session_start();
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Book A Table</h2>
-        <p><span>Book Your</span> <span class="description-title">Stay With Us<br></span></p>
+        <p><span>Book Your</span> <span class="description-title">Table for Some Hotpot<br></span></p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
         <div class="row g-0" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-4 reservation-img" style="background-image: url(assets/img/reservation.jpg);"></div>
+          <div class="col-lg-4 reservation-img" style="background-image: url(assets/img/book-hot-pot.jpg);"></div>
 
           <div class="col-lg-8 d-flex align-items-center reservation-form-bg" data-aos="fade-up" data-aos-delay="200">
-            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form">
+            <form action="booking-customer.php" method="POST" class="php-booking-form">
               <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                  <label class="form-label">Name</label>
+                  <input type="text" name="customerName" class="form-control" 
+                         value="<?php echo isset($CustomerName) ? $CustomerName : ''; ?>" 
+                         placeholder="Your Name" required>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                  <label class="form-label">Phone</label>
+                  <input type="tel" class="form-control" name="customerPhone" 
+                         value="<?php echo isset($Phone) ? $Phone : ''; ?>"
+                         placeholder="Your Phone" required>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required="">
+                  <label class="form-label">Email (Optional)</label>
+                  <input type="email" class="form-control" name="customerEmail" 
+                         value="<?php echo isset($CustomerEmail) ? $CustomerEmail : ''; ?>"
+                         placeholder="Your Email">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="date" name="date" class="form-control" id="date" placeholder="Date" required="">
+                  <label class="form-label">Date</label>
+                  <input type="date" name="bookingDate" class="form-control" required>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="time" class="form-control" name="time" id="time" placeholder="Time" required="">
+                  <label class="form-label">Time</label>
+                  <input type="time" class="form-control" name="bookingTime" required>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="number" class="form-control" name="people" id="people" placeholder="# of people" required="">
+                  <label class="form-label">Number of Guests</label>
+                  <input type="number" class="form-control" name="guests" 
+                         placeholder="# of people" max="8" required>
                 </div>
-              </div>
+                <div class="col-12">
+                  <label class="form-label">Table</label>
+                  <select class="form-control" name="table" required>
+                    <option value="">Choose Table</option>
+                    <?php
+                    $guests = isset($_POST['guests']) ? (int)$_POST['guests'] : 0;
+                    $query2 = "SELECT * FROM tables 
+                             WHERE Capacity >= '$guests' 
+                             ORDER BY TableID";
+                    $ret = mysqli_query($connect, $query2);
+                    $size = mysqli_num_rows($ret);
 
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                    if ($size > 0) {
+                        while ($row = mysqli_fetch_array($ret)) {
+                            $ID = $row['TableID'];
+                            echo "<option value='$ID'>" . $row['TableNumber'] . 
+                                 " (Capacity: " . $row['Capacity'] . 
+                                 ", Location: " . $row['Location'] . ")</option>";
+                        }
+                    } else {
+                        echo "<option disabled>No tables available for this party size</option>";
+                    }
+                    ?>
+                  </select>
+                </div>
               </div>
 
               <div class="text-center mt-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-                <button type="submit">Book a Table</button>
+               <input type="submit" class="btn btn-danger" name="btnsave" value="Book a table">
               </div>
             </form>
-          </div><!-- End Reservation Form -->
+          </div>
 
         </div>
 
@@ -908,64 +808,7 @@ session_start();
 
     </section><!-- /Book A Table Section -->
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery section light-background">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Gallery</h2>
-        <p><span>Check</span> <span class="description-title">Our Gallery</span></p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "centeredSlides": true,
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 0
-                },
-                "768": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 20
-                },
-                "1200": {
-                  "slidesPerView": 5,
-                  "spaceBetween": 20
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-1.jpg"><img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-2.jpg"><img src="assets/img/gallery/gallery-2.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-3.jpg"><img src="assets/img/gallery/gallery-3.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-4.jpg"><img src="assets/img/gallery/gallery-4.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-5.jpg"><img src="assets/img/gallery/gallery-5.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-6.jpg"><img src="assets/img/gallery/gallery-6.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-7.jpg"><img src="assets/img/gallery/gallery-7.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" href="assets/img/gallery/gallery-8.jpg"><img src="assets/img/gallery/gallery-8.jpg" class="img-fluid" alt=""></a></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Gallery Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -1026,7 +869,7 @@ session_start();
 
         </div>
 
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+        <form action="forms/contact.php" method="post" class="php-booking-form" data-aos="fade-up" data-aos-delay="600">
           <div class="row gy-4">
 
             <div class="col-md-6">
@@ -1072,7 +915,7 @@ session_start();
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/php-booking-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -1081,6 +924,35 @@ session_start();
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+  document.querySelector('input[name="guests"]').addEventListener('change', function() {
+      const guests = this.value;
+      const tableSelect = document.querySelector('select[name="table"]');
+      
+      // Clear existing options
+      tableSelect.innerHTML = '<option value="">Choose Table</option>';
+      
+      if (guests > 0) {
+          fetch(`get_tables.php?guests=${guests}`)
+              .then(response => response.json())
+              .then(tables => {
+                  if (tables.length > 0) {
+                      tables.forEach(table => {
+                          const option = document.createElement('option');
+                          option.value = table.TableID;
+                          option.textContent = `${table.TableNumber} (Capacity: ${table.Capacity}, Location: ${table.Location})`;
+                          tableSelect.appendChild(option);
+                      });
+                  } else {
+                      const option = document.createElement('option');
+                      option.disabled = true;
+                      option.textContent = 'No tables available for this party size';
+                      tableSelect.appendChild(option);
+                  }
+              });
+      }
+  });
+  </script>
 </body>
 
 </html>

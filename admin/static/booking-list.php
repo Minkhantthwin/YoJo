@@ -23,26 +23,28 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
 // Query with search and pagination
-$query = "SELECT b.*, c.CustomerName, t.TableNumber 
+// Update the main query
+$query = "SELECT b.*, t.TableNumber 
           FROM booking b 
-          JOIN customer c ON b.CustomerID = c.CustomerID 
           JOIN tables t ON b.TableID = t.TableID";
 
 if (!empty($searchTerm)) {
-    $query .= " WHERE c.CustomerName LIKE '%$searchTerm%' 
+    $query .= " WHERE b.CustomerName LIKE '%$searchTerm%' 
+                OR b.CustomerPhone LIKE '%$searchTerm%'
                 OR b.booking_date LIKE '%$searchTerm%' 
                 OR b.status LIKE '%$searchTerm%'";
 }
 
-$query .= " ORDER BY b.booking_date DESC LIMIT $offset, $recordsPerPage";
+$query .= " ORDER BY b.created_at DESC LIMIT $offset, $recordsPerPage";
 
+// Execute the main query
 $result = mysqli_query($connect, $query);
 
-// Get total records for pagination
-$totalQuery = "SELECT COUNT(*) as total FROM booking b 
-               JOIN customer c ON b.CustomerID = c.CustomerID";
+// Update total records query
+$totalQuery = "SELECT COUNT(*) as total FROM booking b";
 if (!empty($searchTerm)) {
-    $totalQuery .= " WHERE c.CustomerName LIKE '%$searchTerm%' 
+    $totalQuery .= " WHERE b.CustomerName LIKE '%$searchTerm%' 
+                     OR b.CustomerPhone LIKE '%$searchTerm%'
                      OR b.booking_date LIKE '%$searchTerm%' 
                      OR b.status LIKE '%$searchTerm%'";
 }
@@ -110,7 +112,8 @@ $currentPage = $page;
 										<thead>
 											<tr>
 												<th>Booking ID</th>
-												<th>Customer</th>
+												<th>Customer Name</th>
+												<th>Phone</th>
 												<th>Table</th>
 												<th>Date</th>
 												<th>Time</th>
@@ -122,12 +125,13 @@ $currentPage = $page;
 										<tbody>
 											<?php
 											if (mysqli_num_rows($result) < 1) {
-												echo "<tr><td colspan='8'>No Record Found!</td></tr>";
+												echo "<tr><td colspan='9'>No Record Found!</td></tr>";
 											} else {
 												while ($row = mysqli_fetch_assoc($result)) {
 													echo "<tr>";
 													echo "<td>" . $row['BookingID'] . "</td>";
 													echo "<td>" . $row['CustomerName'] . "</td>";
+													echo "<td>" . $row['CustomerPhone'] . "</td>";
 													echo "<td>" . $row['TableNumber'] . "</td>";
 													echo "<td>" . $row['booking_date'] . "</td>";
 													echo "<td>" . $row['booking_time'] . "</td>";

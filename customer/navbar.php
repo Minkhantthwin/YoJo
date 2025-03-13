@@ -26,7 +26,7 @@ if (isset($_SESSION['CustomerID'])) {
           <li><a href="#hero" class="active">Home<br></a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
-          <li><a href="#gallery">Reviews</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
           <li><a href="#contact">Contacts</a></li>
           <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
@@ -42,7 +42,7 @@ if (isset($_SESSION['CustomerID'])) {
             <li><a href="#hero" class="active">Home<br></a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
-          <li><a href="#gallery">Reviews</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
           <li><a href="#contact">Contacts</a></li>
           <li><a href="sign-in.php">Sign-in</a></li>
             </ul>
@@ -51,7 +51,7 @@ if (isset($_SESSION['CustomerID'])) {
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#book-a-table">Book a Table</a>
+      <a class="btn-getstarted" href="#book-a-table">Book a Table</a>
 
     </div>
   </header>

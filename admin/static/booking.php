@@ -15,13 +15,16 @@ $resultAdmin = mysqli_query($connect, $selectAdmin);
 $rowAdmin = mysqli_fetch_assoc($resultAdmin);
 $AdminName = $rowAdmin['AdminName'];
 
+// Update the PHP processing section
 if (isset($_POST['btnsave']))
 {
     $bookingDate = $_POST['bookingDate'];
     $bookingTime = $_POST['bookingTime'];
     $guests = $_POST['guests'];
-    $customerID = $_POST['customer'];
-    $tableID = $_POST['table']; // Fixed the name attribute to match the form
+    $customerName = $_POST['customerName'];
+    $customerPhone = $_POST['customerPhone'];
+    $customerEmail = $_POST['customerEmail'];
+    $tableID = $_POST['table'];
     $status = 'Pending';
 
     // Check if the table is already booked for the same date and time
@@ -52,8 +55,8 @@ if (isset($_POST['btnsave']))
     }
     else
     {
-        $query = "INSERT INTO booking(booking_date, booking_time, guests, CustomerID, TableID, status) 
-                  VALUES ('$bookingDate', '$bookingTime', '$guests', '$customerID', '$tableID', '$status')";
+        $query = "INSERT INTO booking(booking_date, booking_time, guests, CustomerName, CustomerPhone, CustomerEmail, TableID, status) 
+                  VALUES ('$bookingDate', '$bookingTime', '$guests', '$customerName', '$customerPhone', '$customerEmail', '$tableID', '$status')";
         $result = mysqli_query($connect, $query);
 
         if ($result) {
@@ -129,25 +132,21 @@ if (isset($_POST['btnsave']))
                                         <div class="row mb-3">
                                             <div class="col-6">
                                             <label class="form-label">Guests</label>
-                                            <input type="number" class="form-control form-control-lg" name="guests" placeholder="Number of guests" max="8" />
+                                            <input type="number" class="form-control form-control-lg" name="guests" placeholder="Number of guests" max="8" required />
                                             </div>
                                             <div class="col-6">
-                                            <label class="form-label">Booking-Customer</label>
-                                            <select class="form-select mb-3" name="customer">
-                                            <option selected>Choose Customer</option>
-                                            <?php
-                                            $query2 = "SELECT * FROM customer order by CustomerName";
-                                            $ret = mysqli_query($connect, $query2);
-                                            $size = mysqli_num_rows($ret);
-
-                                            for ($i = 0; $i < $size; $i++) {
-                                                $row = mysqli_fetch_array($ret);
-                                                $CustomerID = $row['CustomerID'];
-
-                                                echo "<option value='$CustomerID'>" . $row['CustomerName'] . "</option>";
-                                            }
-                                            ?>
-                                            </select>
+                                            <label class="form-label">Customer Name</label>
+                                            <input type="text" class="form-control form-control-lg" name="customerName" placeholder="Enter customer name" required />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control form-control-lg" name="customerPhone" placeholder="Enter phone number" required />
+                                            </div>
+                                            <div class="col-6">
+                                            <label class="form-label">Email (Optional)</label>
+                                            <input type="email" class="form-control form-control-lg" name="customerEmail" placeholder="Enter email address" />
                                             </div>
                                         </div>
                                         <div class="row mb-3">

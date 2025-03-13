@@ -20,9 +20,9 @@ $AdminName = $rowAdmin['AdminName'];
 
 
 // Fetch booking details
-$query = "SELECT b.*, c.CustomerName, t.TableNumber 
+// Update the query
+$query = "SELECT b.*, t.TableNumber 
           FROM booking b 
-          JOIN customer c ON b.CustomerID = c.CustomerID 
           JOIN tables t ON b.TableID = t.TableID 
           WHERE b.BookingID = '$ID'";
 $result = mysqli_query($connect, $query);
@@ -31,11 +31,9 @@ $booking = mysqli_fetch_assoc($result);
 // Handle form submission
 if(isset($_POST['btnUpdate'])) {
     $newStatus = $_POST['status'];
-
-    
+  
     $updateQuery = "UPDATE booking 
-                   SET status = '$newStatus', 
-                       
+                   SET status = '$newStatus'
                    WHERE BookingID = '$ID'";
     
     if(mysqli_query($connect, $updateQuery)) {
@@ -100,6 +98,16 @@ if(isset($_POST['btnUpdate'])) {
                                             <div class="col-6">
                                                 <label class="form-label">Customer Name</label>
                                                 <input type="text" class="form-control" value="<?php echo $booking['CustomerName']; ?>" readonly />
+                                            </div>
+                                            <div class="col-6">
+                                                <label class="form-label">Phone Number</label>
+                                                <input type="text" class="form-control" value="<?php echo $booking['CustomerPhone']; ?>" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <label class="form-label">Email</label>
+                                                <input type="text" class="form-control" value="<?php echo $booking['CustomerEmail']; ?>" readonly />
                                             </div>
                                             <div class="col-6">
                                                 <label class="form-label">Table Number</label>
